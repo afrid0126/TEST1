@@ -1,0 +1,37 @@
+name: Python Quality Checks
+
+# Trigger the pipeline on any push or pull request
+on: [push, pull_request]
+
+jobs:
+  test-pipeline:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install checking tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 mypy pytest black
+          
+      # The pipeline will run these commands in order.
+      # If any step fails, the pipeline halts immediately.
+      
+      - name: 1. Check Formatting (Black)
+        run: black --check broken_pipeline.py
+        
+      - name: 2. Linting (Flake8)
+        run: flake8 broken_pipeline.py
+        
+      - name: 3. Type Checking (Mypy)
+        run: mypy broken_pipeline.py
+        
+      - name: 4. Unit Tests (Pytest)
+        run: pytest broken_pipeline.py
