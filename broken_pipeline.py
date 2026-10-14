@@ -1,20 +1,14 @@
-def well_named_function(x: int, y: int) -> None:
-    """A sample function."""
-    print(f"Values are {x} and {y}")
+import os, sys # Flake8 error: multiple imports on one line (E401) and unused imports (F401)
 
+# Black error: improper spacing and missing blank lines
+def BadlyNamedFunction( x,y ):
+    unused_var = 10 # Flake8 error: assigned to but never used (F841)
+    return x+y 
 
-def type_hint_success(a: int) -> int:
-    """Adds 5 to the input."""
-    return a + 5
+# Mypy error: incompatible types (adding string to int) and missing return type
+def type_error_example(a: int):
+    return a + "this is a string"
 
-
-def normal_blank_lines() -> None:
-    """Demonstrates normal variable usage."""
-    used_variable = 42
-    short_line = f"This is fine now {used_variable}"
-    print(short_line)
-
-
-def test_always_passes() -> None:
-    """A test that will pass pytest."""
-    assert 2 == 2, "This assertion will pass"
+# Pytest error: this assertion will always fail
+def test_will_fail():
+    assert 1 == 2, "This test is designed to break the pipeline"
