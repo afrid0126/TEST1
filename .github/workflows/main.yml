@@ -22,7 +22,7 @@ jobs:
           pip install flake8 mypy pytest black
           
       - name: 1. Check Formatting (Black)
-        run: black  broken_pipeline.py
+        run: black broken_pipeline.py
         
       - name: 2. Linting (Flake8)
         run: flake8 --max-line-length=88 broken_pipeline.py
