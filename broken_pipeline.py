@@ -18,7 +18,7 @@ user_id: str = "user_789"
 def fetch_data() -> None:
     api_url = "https://api.example.com"
     print(api_url)
-    
+
     short_string = "This string is short enough to pass line length limits."
     print(short_string)
 
