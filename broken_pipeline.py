@@ -29,4 +29,6 @@ def test_calculate_stuff() -> None:
 
 
 def test_process_payment() -> None:
-    assert process_payment(-50.0, "1234") is False, "Negative payments should fail"
+    assert process_payment(-50.0, "1234") is False, (
+        "Negative payments should fail"
+    )
